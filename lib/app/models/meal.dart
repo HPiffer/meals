@@ -46,6 +46,9 @@ class Meal {
     @required this.cost,
   });
 
+  // =========================================== //
+  // Functions
+  // =========================================== //
   String get complexityText {
     switch (complexity) {
       case Complexity.Simple:
