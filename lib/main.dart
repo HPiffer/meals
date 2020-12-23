@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
         return !filterGluten &&
             !filterLactose &&
             !filterVegan &&
-            filterVegetarian;
+            !filterVegetarian;
       }).toList();
     });
   }
