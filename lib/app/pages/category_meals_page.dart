@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:meals/app/data/dummy_data.dart';
 import 'package:meals/app/models/category.dart';
+import 'package:meals/app/models/meal.dart';
 import 'package:meals/app/widgets/meal_item.dart';
 
 // =========================================== //
 // Category Meals Category
 // =========================================== //
 class CategoriesMealsScreen extends StatelessWidget {
+  // =========================================== //
+  // Variables
+  // =========================================== //
+  final List<Meal> meals;
+
+  const CategoriesMealsScreen({
+    @required this.meals,
+  });
+
   // =========================================== //
   // Functions
   // =========================================== //
@@ -18,7 +27,7 @@ class CategoriesMealsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     //* Parâmetro utilizado para passar informação entre talas
     final category = ModalRoute.of(context).settings.arguments as Category;
-    final categoryMeals = DUMMY_MEALS.where((meal) {
+    final categoryMeals = meals.where((meal) {
       return meal.categories.contains(category.id);
     }).toList();
 

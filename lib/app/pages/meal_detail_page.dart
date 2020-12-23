@@ -5,10 +5,19 @@ import 'package:meals/app/models/meal.dart';
 // Meal Detail Page
 // =========================================== //
 class MealDetailScreen extends StatelessWidget {
+  final Function(Meal) onToggleFavorite;
+  final bool Function(Meal) isFavorite;
+
+  const MealDetailScreen({this.onToggleFavorite, this.isFavorite});
+
   @override
   Widget build(BuildContext context) {
+    // =========================================== //
+    // Variables
+    // =========================================== //
     final meal = ModalRoute.of(context).settings.arguments as Meal;
     final mediaQuery = MediaQuery.of(context);
+
     // =========================================== //
     // Functions
     // =========================================== //
@@ -36,8 +45,6 @@ class MealDetailScreen extends StatelessWidget {
         child: child,
       );
     }
-
-    ;
 
     // =========================================== //
     // Screen
@@ -95,6 +102,10 @@ class MealDetailScreen extends StatelessWidget {
             )),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(isFavorite(meal) ? Icons.star : Icons.star_border),
+        onPressed: () => onToggleFavorite(meal),
       ),
     );
   }

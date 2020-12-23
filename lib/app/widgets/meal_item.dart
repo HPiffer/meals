@@ -19,10 +19,18 @@ class MealItem extends StatelessWidget {
   // Functions
   // =========================================== //
   void _selectMeal(BuildContext context) {
-    Navigator.of(context).pushNamed(
+    Navigator.of(context)
+        .pushNamed(
       AppRoute.MEAL_DETAIL,
       arguments: meal,
-    );
+    )
+        .then((result) {
+      if (result == null) {
+        print('Sem resultado!');
+      } else {
+        print('O nome da refeição é $result');
+      }
+    });
   }
 
   // =========================================== //
